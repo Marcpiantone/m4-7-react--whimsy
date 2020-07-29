@@ -98,6 +98,27 @@ Produce the following animations
 
 https://codesandbox.io/s/floral-dream-d517n
 
+Answer :
+
+import React from "react";
+import styled from "styled-components";
+
+const App = ({ children = "Hello" }) => {
+return (
+<Button>
+<Surface>{children}</Surface>
+<Shadow />
+</Button>
+);
+};
+
+const Button = styled.button`position: relative; width: 300px; height: 80px; background: transparent; border: none; margin: 32px;`;
+const ButtonLayer = styled.div`position: absolute; width: 100%; height: 100%; top: 0; left: 0; border-radius: 4px;`;
+const Surface = styled(ButtonLayer)`z-index: 2; background: hotpink; color: white; text-shadow: 1px 1px 2px mediumvioletred; display: flex; justify-content: center; align-items: center; font-size: 32px; transition: all ease 300ms; &:hover { cursor: pointer; transform: translate(-8px, -8px); }`;
+const Shadow = styled(ButtonLayer)`position: absolute; z-index: 1; width: 100%; height: 100%; border-radius: 4px; background: #ccc;`;
+
+export default App;
+
 ---
 
 https://codesandbox.io/s/beautiful-ishizaka-c48ho?file=/src/App.js

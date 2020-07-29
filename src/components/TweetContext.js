@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { useState, createContext } from "react";
 import avatar from "../assets/carmen-sandiego.png";
 
 import moment from "moment";
@@ -6,12 +6,10 @@ import moment from "moment";
 export const TweetContext = createContext(null);
 
 export const TweetProvider = ({ children }) => {
-  //   const tweetContents = "Where in the world am I?";
-  //   const displayName = "Carmen Sandiego ✨";
-  //   const username = "carmen-sandiego";
-  //   const avatarSrc = { avatar };
-  //   const isRetweetedByCurrentUser = false;
-  //   const isLikedByCurrentUser = false;
+  const [numOfLikes, setNumOfLikes] = useState(460);
+  const [numOfRetweets, setNumOfRetweets] = useState(65);
+  const [isLiked, setIsLiked] = useState(false);
+  const [isRetweeted, setIsRetweeted] = useState(false);
 
   return (
     <TweetContext.Provider
@@ -21,8 +19,10 @@ export const TweetProvider = ({ children }) => {
         displayName: "Carmen Sandiego ✨",
         username: "carmen-sandiego",
         avatarSrc: avatar,
-        isRetweetedByCurrentUser: false,
-        isLikedByCurrentUser: false,
+        isRetweetedByCurrentUser: isRetweeted,
+        isLikedByCurrentUser: isLiked,
+        numOfLikes,
+        numOfRetweets,
       }}
     >
       {children}

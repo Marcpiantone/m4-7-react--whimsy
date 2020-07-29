@@ -18,6 +18,10 @@ const Tweet = () => {
     isLikedByCurrentUser,
     numOfRetweets,
     numOfLikes,
+    setIsLiked,
+    incrementLikes,
+    incrementRetweet,
+    setIsRetweeted,
   } = useContext(TweetContext);
 
   return (
@@ -31,13 +35,17 @@ const Tweet = () => {
       <Timestamp>{date}</Timestamp>
       <StatsWrap>
         <Stats value={{ number: numOfRetweets, name: "Retweets" }}></Stats>
-        <pre> </pre>
+        <pre> </pre> <pre> </pre>
         <Stats value={{ number: numOfLikes, name: "Likes" }}></Stats>
       </StatsWrap>
       <Divider />
       <ActionBar
         isRetweetedByCurrentUser={isRetweetedByCurrentUser}
         isLikedByCurrentUser={isLikedByCurrentUser}
+        setIsLiked={setIsLiked}
+        incrementLikes={incrementLikes}
+        setIsRetweeted={setIsRetweeted}
+        incrementRetweet={incrementRetweet}
       />
       <Divider />
     </Wrapper>

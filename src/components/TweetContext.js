@@ -11,6 +11,14 @@ export const TweetProvider = ({ children }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [isRetweeted, setIsRetweeted] = useState(false);
 
+  const incrementLikes = (num) => {
+    setNumOfLikes(numOfLikes + num);
+  };
+
+  const incrementRetweet = (num) => {
+    setNumOfRetweets(numOfRetweets + num);
+  };
+
   return (
     <TweetContext.Provider
       value={{
@@ -23,6 +31,10 @@ export const TweetProvider = ({ children }) => {
         isLikedByCurrentUser: isLiked,
         numOfLikes,
         numOfRetweets,
+        setIsLiked,
+        incrementLikes,
+        setIsRetweeted,
+        incrementRetweet,
       }}
     >
       {children}

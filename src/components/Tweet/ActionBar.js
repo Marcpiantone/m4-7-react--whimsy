@@ -5,6 +5,8 @@ import LikeButton from "../LikeButton";
 import Action from "./Action";
 import TweetActionIcon from "./TweetActionIcon";
 
+import ScaleIn from "../LikeButton/ScaleIn";
+
 const ActionBar = ({
   isRetweetedByCurrentUser,
   isLikedByCurrentUser,
@@ -31,10 +33,19 @@ const ActionBar = ({
         <TweetActionIcon kind="reply" />
       </Action>
       <Action color="rgb(23, 191, 99)" size={40} onClick={toggleRetweet}>
-        <TweetActionIcon
-          kind="retweet"
-          color={isRetweetedByCurrentUser ? "rgb(23, 191, 99)" : undefined}
-        />
+        {isRetweetedByCurrentUser ? (
+          <ScaleIn>
+            <TweetActionIcon
+              kind="retweet"
+              color={isRetweetedByCurrentUser ? "rgb(23, 191, 99)" : undefined}
+            />
+          </ScaleIn>
+        ) : (
+          <TweetActionIcon
+            kind="retweet"
+            color={isRetweetedByCurrentUser ? "rgb(23, 191, 99)" : undefined}
+          />
+        )}
       </Action>
       <Action color="rgb(224, 36, 94)" size={40} onClick={toggleLiked}>
         <LikeButton isLiked={isLikedByCurrentUser} />
